@@ -1,70 +1,154 @@
-# Getting Started with Create React App
+# Car Wash Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive single-user, offline car wash management application built with React and LocalStorage.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### 🔐 Authentication
+- Simple static authentication system
+- Default credentials: `admin` / `admin123`
 
-### `npm start`
+### 📊 Dashboard
+- Real-time KPI cards showing Today, Last 7 Days, and This Month statistics
+- Income, Expenses, and Profit calculations
+- Top 5 breakdowns by Car and Wash Type
+- Quick summary with total counts and amounts
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🚗 Add Wash
+- Visual car selector with icon cards
+- Wash type selection with auto-pricing
+- Customizable pricing (per-car overrides supported)
+- Date/time selection with notes
+- Real-time price calculation based on settings
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 💰 Expenses
+- Expense tracking with categories (Shampoo, Water, Detergent, etc.)
+- Add, edit, and delete expenses
+- Today's expenses quick view
+- Date and category filtering
 
-### `npm test`
+### 📋 History
+- Combined view of washes and expenses
+- Advanced filtering by date, car, wash type, and category
+- Edit and delete functionality for all records
+- Sortable by date (newest first)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### ⚙️ Settings
+- **Cars Management**: Add, edit, delete cars with custom images
+- **Wash Types Management**: Configure wash types with default prices
+- **Data Management**: 
+  - Export all data as JSON backup
+  - Import data from JSON file
+  - Reset all data with confirmation
 
-### `npm run build`
+## Technical Details
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Data Storage
+- All data persisted in LocalStorage (`cw.data` key)
+- No backend required - fully offline
+- Automatic data migration support
+- Export/Import functionality for backups
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Data Model
+```javascript
+{
+  version: 1,
+  cars: [{ id, name, imgUrl, createdAt }],
+  washTypes: [{ id, name, defaultPrice, perCarOverrides, createdAt }],
+  washes: [{ id, carId, washTypeId, price, date, notes, createdAt }],
+  expenses: [{ id, name, amount, category, date, notes, createdAt }],
+  settings: { currency: '€', weekMode: 'last7days' }
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Business Rules
+- **Price Resolution**: Per-car override → Wash type default price
+- **Time Buckets**: Daily (same calendar day), Weekly (last 7 days), Monthly (current month)
+- **Statistics**: Real-time calculations for income, expenses, and profit
+- **Validation**: Comprehensive form validation with user-friendly error messages
 
-### `npm run eject`
+### Technologies Used
+- **React 19** with functional components and hooks
+- **Tailwind CSS** for styling
+- **Plain JavaScript** Date APIs (no external date libraries)
+- **LocalStorage** for data persistence
+- **Responsive Design** for mobile and desktop
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
+- Node.js (v14 or higher)
+- npm
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation
+```bash
+# Install dependencies
+npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Start development server
+npm start
+```
 
-## Learn More
+### Default Login
+- Username: `admin`
+- Password: `admin123`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Available Scripts
+- `npm start` - Runs the app in development mode
+- `npm run build` - Builds the app for production
+- `npm test` - Launches the test runner
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Usage Guide
 
-### Code Splitting
+1. **Login** with the default credentials
+2. **Setup**: Go to Settings to configure your cars and wash types
+3. **Add Washes**: Use the Add Wash tab to record car wash services
+4. **Track Expenses**: Record business expenses in the Expenses tab
+5. **Monitor Performance**: View real-time statistics on the Dashboard
+6. **Manage Data**: Use History tab to view, edit, or delete records
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Data Management
 
-### Analyzing the Bundle Size
+### Export Data
+- Go to Settings → Data Management
+- Click "Export Data" to download a JSON backup file
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Import Data
+- Go to Settings → Data Management
+- Upload a JSON file to restore data (replaces current data)
 
-### Making a Progressive Web App
+### Reset Data
+- Go to Settings → Data Management
+- Click "Reset All Data" to start fresh (requires confirmation)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Customization
 
-### Advanced Configuration
+### Adding Cars
+1. Go to Settings → Cars
+2. Enter car name and image URL
+3. Click "Add Car"
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Adding Wash Types
+1. Go to Settings → Wash Types
+2. Enter type name and default price
+3. Click "Add Wash Type"
 
-### Deployment
+### Per-Car Pricing
+- Configure default prices for wash types
+- Optionally set custom prices for specific cars
+- System automatically uses the most specific price available
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Browser Compatibility
 
-### `npm run build` fails to minify
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Security Note
+
+This application uses static authentication for simplicity. In a production environment, consider implementing proper authentication and data encryption.
+
+## License
+
+This project is open source and available under the MIT License.

@@ -28,7 +28,7 @@ const Login = ({ onLogin }) => {
       <div className="max-w-md w-full space-y-6 sm:space-y-8">
         <div>
           <h2 className="mt-4 sm:mt-6 text-center text-2xl sm:text-3xl font-extrabold text-gray-900">
-            Menaxhuesi i Larjeve
+            Autolarje Finish
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
             Hyni në llogarinë tuaj
@@ -85,7 +85,7 @@ const Login = ({ onLogin }) => {
           </div>
 
           <div className="text-xs text-gray-500 text-center">
-            Kredencialet e paracaktuara: admin / admin123
+            Tecto Agency 2025
           </div>
         </form>
       </div>

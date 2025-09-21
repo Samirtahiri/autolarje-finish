@@ -212,7 +212,7 @@ const AddWash = ({ store, updateStore }) => {
           <p className="text-gray-600 mb-6">Zgjidh makinën që duhet të lahet</p>
           
           {store.cars.length > 0 ? (
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
               {store.cars.map((car) => (
                 <CarCard key={car.id} car={car} />
               ))}
@@ -247,7 +247,7 @@ const AddWash = ({ store, updateStore }) => {
           <p className="text-gray-600 mb-6">Zgjidh llojin e shërbimit të larjes</p>
           
           {store.washTypes.length > 0 ? (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {store.washTypes.map((washType) => (
                 <WashTypeCard key={washType.id} washType={washType} />
               ))}
@@ -291,7 +291,7 @@ const AddWash = ({ store, updateStore }) => {
           {/* Selection Summary */}
           <div className="bg-gray-50 rounded-lg p-6 mb-6">
             <h3 className="text-lg font-medium text-gray-900 mb-4">Përmbledhje Larjeje</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-500">Makina e Zgjedhur</label>
                 <div className="flex items-center mt-1">
@@ -377,9 +377,9 @@ const AddWash = ({ store, updateStore }) => {
               )}
 
               {/* Payment Status */}
-              <div className="md:col-span-2">
+              <div className="sm:col-span-2">
                 <label className="block text-sm font-medium text-gray-500 mb-2">Statusi i Pagesës</label>
-                <div className="flex items-center space-x-4">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
                   <label className="flex items-center">
                     <input
                       type="radio"

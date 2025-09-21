@@ -79,7 +79,7 @@ const Dashboard = ({ store }) => {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <KPICard
           title="Sot"
           data={kpis.today}
@@ -101,7 +101,7 @@ const Dashboard = ({ store }) => {
       </div>
 
       {/* Breakdown Cards */}
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
         <BreakdownCard
           title="Të Ardhurat sipas Makinave (Top 5)"
           data={incomeByCar}
@@ -118,20 +118,20 @@ const Dashboard = ({ store }) => {
       <div className="bg-white shadow rounded-lg">
         <div className="px-4 py-5 sm:p-6">
           <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">Përmbledhje e Shpejtë</h3>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <div className="text-center">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="text-center p-4 bg-gray-50 rounded-lg">
               <div className="text-2xl font-bold text-blue-600">
                 {store.washes.length}
               </div>
               <div className="text-sm text-gray-500">Total Larjesh</div>
             </div>
-            <div className="text-center">
+            <div className="text-center p-4 bg-gray-50 rounded-lg">
               <div className="text-2xl font-bold text-green-600">
                 {formatCurrency(store.washes.reduce((sum, wash) => sum + wash.price, 0), currency)}
               </div>
               <div className="text-sm text-gray-500">Të Ardhurat Totale</div>
             </div>
-            <div className="text-center">
+            <div className="text-center p-4 bg-gray-50 rounded-lg sm:col-span-2 lg:col-span-1">
               <div className="text-2xl font-bold text-red-600">
                 {formatCurrency(store.expenses.reduce((sum, expense) => sum + expense.amount, 0), currency)}
               </div>

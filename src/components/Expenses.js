@@ -257,23 +257,23 @@ const Expenses = ({ store, updateStore }) => {
           </h3>
           
           {todayExpenses.length > 0 ? (
-            <div className="overflow-hidden">
+            <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Emri
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
                       Kategoria
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Shuma
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Data
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Veprimet
                     </th>
                   </tr>
@@ -281,31 +281,33 @@ const Expenses = ({ store, updateStore }) => {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {todayExpenses.map((expense) => (
                     <tr key={expense.id}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {expense.name}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden sm:table-cell">
                         {expense.category || '-'}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                         {formatCurrency(expense.amount)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {formatDate(expense.date)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <button
-                          onClick={() => handleEdit(expense)}
-                          className="text-indigo-600 hover:text-indigo-900 mr-3"
-                        >
-                          Ndrysho
-                        </button>
-                        <button
-                          onClick={() => handleDelete(expense.id)}
-                          className="text-red-600 hover:text-red-900"
-                        >
-                          Fshi
-                        </button>
+                      <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <div className="flex flex-col sm:flex-row gap-1 sm:gap-3">
+                          <button
+                            onClick={() => handleEdit(expense)}
+                            className="text-indigo-600 hover:text-indigo-900 text-xs sm:text-sm"
+                          >
+                            Ndrysho
+                          </button>
+                          <button
+                            onClick={() => handleDelete(expense.id)}
+                            className="text-red-600 hover:text-red-900 text-xs sm:text-sm"
+                          >
+                            Fshi
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}

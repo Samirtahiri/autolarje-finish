@@ -448,17 +448,17 @@ const Settings = ({ store, updateStore }) => {
           <div className="bg-white shadow rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">Llojet e Larjes ({store.washTypes.length})</h3>
-              <div className="overflow-hidden">
+              <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Name
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Default Price
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Actions
                       </th>
                     </tr>
@@ -466,25 +466,27 @@ const Settings = ({ store, updateStore }) => {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {store.washTypes.map((washType) => (
                       <tr key={washType.id}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                           {washType.name}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                           {washType.defaultPrice}€
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                          <button
-                            onClick={() => handleEditWashType(washType)}
-                            className="text-indigo-600 hover:text-indigo-900 mr-3"
-                          >
-                            Ndrysho
-                          </button>
-                          <button
-                            onClick={() => handleDeleteWashType(washType.id)}
-                            className="text-red-600 hover:text-red-900"
-                          >
-                            Fshi
-                          </button>
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                          <div className="flex flex-col sm:flex-row gap-1 sm:gap-3">
+                            <button
+                              onClick={() => handleEditWashType(washType)}
+                              className="text-indigo-600 hover:text-indigo-900 text-xs sm:text-sm"
+                            >
+                              Ndrysho
+                            </button>
+                            <button
+                              onClick={() => handleDeleteWashType(washType.id)}
+                              className="text-red-600 hover:text-red-900 text-xs sm:text-sm"
+                            >
+                              Fshi
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -571,23 +573,23 @@ const Settings = ({ store, updateStore }) => {
           <div className="bg-white shadow rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <h3 className="text-lg leading-6 font-medium text-gray-900 mb-4">Kompanitë ({store.companies.length})</h3>
-              <div className="overflow-hidden">
+              <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Emri i Kompanisë
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
                         Personi i Kontaktit
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                         Telefoni
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                         Email
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Veprimet
                       </th>
                     </tr>
@@ -595,31 +597,33 @@ const Settings = ({ store, updateStore }) => {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {store.companies.map((company) => (
                       <tr key={company.id}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                           {company.name}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900 hidden sm:table-cell">
                           {company.contactPerson || '-'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900 hidden lg:table-cell">
                           {company.phone || '-'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900 hidden lg:table-cell">
                           {company.email || '-'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                          <button
-                            onClick={() => handleEditCompany(company)}
-                            className="text-indigo-600 hover:text-indigo-900 mr-3"
-                          >
-                            Ndrysho
-                          </button>
-                          <button
-                            onClick={() => handleDeleteCompany(company.id)}
-                            className="text-red-600 hover:text-red-900"
-                          >
-                            Fshi
-                          </button>
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                          <div className="flex flex-col sm:flex-row gap-1 sm:gap-3">
+                            <button
+                              onClick={() => handleEditCompany(company)}
+                              className="text-indigo-600 hover:text-indigo-900 text-xs sm:text-sm"
+                            >
+                              Ndrysho
+                            </button>
+                            <button
+                              onClick={() => handleDeleteCompany(company.id)}
+                              className="text-red-600 hover:text-red-900 text-xs sm:text-sm"
+                            >
+                              Fshi
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -731,11 +735,11 @@ const Settings = ({ store, updateStore }) => {
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Car Type
                         </th>
                         {store.washTypes.map((washType) => (
-                          <th key={washType.id} className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          <th key={washType.id} className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             {washType.name}
                             <div className="text-xs text-gray-400">(Default: {washType.defaultPrice}{pricingConfig.currency})</div>
                           </th>
@@ -745,12 +749,12 @@ const Settings = ({ store, updateStore }) => {
                     <tbody className="bg-white divide-y divide-gray-200">
                       {store.cars.map((car) => (
                         <tr key={car.id}>
-                          <td className="px-6 py-4 whitespace-nowrap">
+                          <td className="px-3 sm:px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                               <img
                                 src={car.imgUrl}
                                 alt={car.name}
-                                className="w-8 h-8 object-contain mr-3"
+                                className="w-6 h-6 sm:w-8 sm:h-8 object-contain mr-2 sm:mr-3"
                                 onError={(e) => {
                                   e.target.src = 'https://via.placeholder.com/32x32?text=' + car.name;
                                 }}
@@ -761,17 +765,19 @@ const Settings = ({ store, updateStore }) => {
                           {store.washTypes.map((washType) => {
                             const currentPrice = washType.perCarOverrides && washType.perCarOverrides[car.id];
                             return (
-                              <td key={washType.id} className="px-6 py-4 whitespace-nowrap">
-                                <input
-                                  type="number"
-                                  value={currentPrice || ''}
-                                  onChange={(e) => handleUpdateCarPricing(washType.id, car.id, e.target.value)}
-                                  step="0.01"
-                                  min="0"
-                                  className="w-20 px-2 py-1 text-sm border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                                  placeholder={washType.defaultPrice.toString()}
-                                />
-                                <span className="ml-1 text-xs text-gray-500">{pricingConfig.currency}</span>
+                              <td key={washType.id} className="px-3 sm:px-6 py-4 whitespace-nowrap">
+                                <div className="flex items-center">
+                                  <input
+                                    type="number"
+                                    value={currentPrice || ''}
+                                    onChange={(e) => handleUpdateCarPricing(washType.id, car.id, e.target.value)}
+                                    step="0.01"
+                                    min="0"
+                                    className="w-16 sm:w-20 px-1 sm:px-2 py-1 text-xs sm:text-sm border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                                    placeholder={washType.defaultPrice.toString()}
+                                  />
+                                  <span className="ml-1 text-xs text-gray-500">{pricingConfig.currency}</span>
+                                </div>
                               </td>
                             );
                           })}
@@ -952,7 +958,7 @@ const Settings = ({ store, updateStore }) => {
       {/* Edit Modals */}
       {editingCar && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+          <div className="relative top-10 sm:top-20 mx-auto p-4 sm:p-5 border w-11/12 sm:w-96 shadow-lg rounded-md bg-white">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Ndrysho Makinën</h3>
               
@@ -999,7 +1005,7 @@ const Settings = ({ store, updateStore }) => {
 
       {editingWashType && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+          <div className="relative top-10 sm:top-20 mx-auto p-4 sm:p-5 border w-11/12 sm:w-96 shadow-lg rounded-md bg-white">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Ndrysho Llojin e Larjes</h3>
               
@@ -1049,7 +1055,7 @@ const Settings = ({ store, updateStore }) => {
       {/* Company Edit Modal */}
       {editingCompany && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+          <div className="relative top-10 sm:top-20 mx-auto p-4 sm:p-5 border w-11/12 sm:w-96 shadow-lg rounded-md bg-white">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Ndrysho Kompaninë</h3>
               

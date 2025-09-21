@@ -216,7 +216,7 @@ const History = ({ store, updateStore }) => {
 
       {/* Filters */}
       <div className="bg-white shadow rounded-lg p-4">
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">Nga Data</label>
             <input
@@ -395,35 +395,35 @@ const History = ({ store, updateStore }) => {
             </h3>
             
             {getFilteredWashes().length > 0 ? (
-              <div className="overflow-hidden">
+              <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Makina
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Lloji i Larjes
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Çmimi
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
                         Kompania
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                         Targa
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Statusi i Pagesës
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Statusi
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Data
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                         Shënime
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Veprimet
                       </th>
                     </tr>
@@ -431,49 +431,51 @@ const History = ({ store, updateStore }) => {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {getFilteredWashes().map((wash) => (
                       <tr key={wash.id}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                           {getCarName(wash.carId)}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {getWashTypeName(wash.washTypeId)}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                           {formatCurrency(wash.price)}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden sm:table-cell">
                           {wash.companyId ? getCompanyName(wash.companyId) : '-'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden lg:table-cell">
                           {wash.carPlate || '-'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm">
-                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm">
+                          <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${
                             wash.isPaid 
                               ? 'bg-green-100 text-green-800' 
                               : 'bg-red-100 text-red-800'
                           }`}>
-                            {wash.isPaid ? '✓ I Paguar' : '✗ Nuk është paguar'}
+                            {wash.isPaid ? '✓' : '✗'}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {formatDate(wash.date)}
                         </td>
-                        <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
+                        <td className="px-3 sm:px-6 py-4 text-sm text-gray-500 max-w-xs truncate hidden lg:table-cell">
                           {wash.notes || '-'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                          <button
-                            onClick={() => handleEditWash(wash)}
-                            className="text-indigo-600 hover:text-indigo-900 mr-3"
-                          >
-                            Ndrysho
-                          </button>
-                          <button
-                            onClick={() => handleDeleteWash(wash.id)}
-                            className="text-red-600 hover:text-red-900"
-                          >
-                            Fshi
-                          </button>
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                          <div className="flex flex-col sm:flex-row gap-1 sm:gap-3">
+                            <button
+                              onClick={() => handleEditWash(wash)}
+                              className="text-indigo-600 hover:text-indigo-900 text-xs sm:text-sm"
+                            >
+                              Ndrysho
+                            </button>
+                            <button
+                              onClick={() => handleDeleteWash(wash.id)}
+                              className="text-red-600 hover:text-red-900 text-xs sm:text-sm"
+                            >
+                              Fshi
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -498,26 +500,26 @@ const History = ({ store, updateStore }) => {
             </h3>
             
             {getFilteredExpenses().length > 0 ? (
-              <div className="overflow-hidden">
+              <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Emri
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
                         Kategoria
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Shuma
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Data
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                         Shënime
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Veprimet
                       </th>
                     </tr>
@@ -525,34 +527,36 @@ const History = ({ store, updateStore }) => {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {getFilteredExpenses().map((expense) => (
                       <tr key={expense.id}>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                           {expense.name}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden sm:table-cell">
                           {expense.category || '-'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                           {formatCurrency(expense.amount)}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                           {formatDate(expense.date)}
                         </td>
-                        <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
+                        <td className="px-3 sm:px-6 py-4 text-sm text-gray-500 max-w-xs truncate hidden lg:table-cell">
                           {expense.notes || '-'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                          <button
-                            onClick={() => handleEditExpense(expense)}
-                            className="text-indigo-600 hover:text-indigo-900 mr-3"
-                          >
-                            Ndrysho
-                          </button>
-                          <button
-                            onClick={() => handleDeleteExpense(expense.id)}
-                            className="text-red-600 hover:text-red-900"
-                          >
-                            Fshi
-                          </button>
+                        <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-sm font-medium">
+                          <div className="flex flex-col sm:flex-row gap-1 sm:gap-3">
+                            <button
+                              onClick={() => handleEditExpense(expense)}
+                              className="text-indigo-600 hover:text-indigo-900 text-xs sm:text-sm"
+                            >
+                              Ndrysho
+                            </button>
+                            <button
+                              onClick={() => handleDeleteExpense(expense.id)}
+                              className="text-red-600 hover:text-red-900 text-xs sm:text-sm"
+                            >
+                              Fshi
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -571,7 +575,7 @@ const History = ({ store, updateStore }) => {
       {/* Edit Modals */}
       {editingWash && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+          <div className="relative top-10 sm:top-20 mx-auto p-4 sm:p-5 border w-11/12 sm:w-96 shadow-lg rounded-md bg-white">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Ndrysho Larjen</h3>
               
@@ -713,7 +717,7 @@ const History = ({ store, updateStore }) => {
 
       {editingExpense && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+          <div className="relative top-10 sm:top-20 mx-auto p-4 sm:p-5 border w-11/12 sm:w-96 shadow-lg rounded-md bg-white">
             <div className="mt-3">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Ndrysho Shpenzimin</h3>
               

@@ -15,3 +15,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+  /* Ensure tables are properly scrollable on mobile */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Improve button spacing on mobile */
+  .flex.flex-col.gap-1 {
+    gap: 0.5rem;
+  }
+  
+  /* Better modal positioning on mobile */
+  .fixed.inset-0 {
+    padding: 1rem;
+  }
+}
+
+/* Ensure proper touch targets on mobile */
+@media (max-width: 768px) {
+  button, input, select, textarea {
+    min-height: 44px;
+  }
+}
